@@ -3,28 +3,28 @@
 StoreMessage::StoreMessage() : _msgs(new vector<msg>) {};
 StoreMessage::~StoreMessage() {	delete _msgs; }
 
-// âûâåñòè ëè÷íûå ñîîáùåíèÿ äëÿ þçåðà "name"
+// Ã¢Ã»Ã¢Ã¥Ã±Ã²Ã¨ Ã«Ã¨Ã·Ã­Ã»Ã¥ Ã±Ã®Ã®Ã¡Ã¹Ã¥Ã­Ã¨Ã¿ Ã¤Ã«Ã¿ Ã¾Ã§Ã¥Ã°Ã  "name"
 void StoreMessage::showMsgTo(string name)
 {
     if (!_msgs->empty()) {
         for (size_t i = 0; i < _msgs->size(); ++i) {
             if ((*_msgs)[i]._to == name) cout << (*_msgs)[i]._mess << endl;
         }
-    } else cout << "Â áàçå íåò ñîîáùåíèé" << endl;
-    cout << string("Íåò ëè÷íûõ ñîîáùåíèé äëÿ ïîëüçîâàòåëÿ ").append(name).append("\n");
+    } else cout << "Ã‚ Ã¡Ã Ã§Ã¥ Ã­Ã¥Ã² Ã±Ã®Ã®Ã¡Ã¹Ã¥Ã­Ã¨Ã©" << endl;
+    cout << string("ÃÃ¥Ã² Ã«Ã¨Ã·Ã­Ã»Ãµ Ã±Ã®Ã®Ã¡Ã¹Ã¥Ã­Ã¨Ã© Ã¤Ã«Ã¿ Ã¯Ã®Ã«Ã¼Ã§Ã®Ã¢Ã Ã²Ã¥Ã«Ã¿ ").append(name).append("\n");
 }
 
-// âûâåñòè ñîîáùåíèÿ äëÿ âñåõ
+// Ã¢Ã»Ã¢Ã¥Ã±Ã²Ã¨ Ã±Ã®Ã®Ã¡Ã¹Ã¥Ã­Ã¨Ã¿ Ã¤Ã«Ã¿ Ã¢Ã±Ã¥Ãµ
 void StoreMessage::showMessageAll() {
     if (!_msgs->empty()) {
         for (size_t i = 0; i < _msgs->size(); ++i) {
             if ((*_msgs)[i]._to == "all") cout << (*_msgs)[i]._mess << endl;
         }
     }
-    else cout << "Â áàçå íåò ñîîáùåíèé" << endl;
+    else cout << "Ã‚ Ã¡Ã Ã§Ã¥ Ã­Ã¥Ã² Ã±Ã®Ã®Ã¡Ã¹Ã¥Ã­Ã¨Ã©" << endl;
 }
 
-// çàïèñü ñîîáùåíèé íà õðàíåíèå
-void StoreMessage::setMessage(string message, string from, string to = "all") {
+// Ã§Ã Ã¯Ã¨Ã±Ã¼ Ã±Ã®Ã®Ã¡Ã¹Ã¥Ã­Ã¨Ã© Ã­Ã  ÃµÃ°Ã Ã­Ã¥Ã­Ã¨Ã¥
+void StoreMessage::setMessage(string message, string from, string to) {
     _msgs->push_back(msg{ from, to, message });
 }
