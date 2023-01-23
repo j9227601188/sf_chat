@@ -5,12 +5,13 @@
 
 // адресат получает
 class User :public IUser {
-	IChat* _chat;
-	static int _total_users;	// это поле общее для всех объектов User(User ID) 
-	int _userID;				// порядковый номер этого наблюдателя
+private:
+	IChat* _chat;				// в каком чате сейчас
+	std::string _name;			// имя пользователя
 public:
-	User(IChat* chat);
-	virtual ~User() {};
+	User(IChat* chat, std::string name);
+	virtual ~User();
 	void Update(const std::string& message_from_subject) override;
 	void RemoveFromList();
+	std::string getUserName();
 };
