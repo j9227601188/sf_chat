@@ -6,27 +6,21 @@ using namespace std;
 
 User::User(IChat* chat, string name) : _chat(chat), _name(name)
 {
-	_chat->Attach(this);				// заносим себ€ в список рассылки	
-	cout << _name << " вошЄл в чат." << endl;
+	_chat->Attach(this);				// заносим себ€ в список участников чата	
+	cout << "\n< " << _name << " > вошЄл в чат." << "\n\n";
 }
 
 User::~User()
 {
-	cout << "ёзер: " << _name << " удалЄн.\n";
+	RemoveFromList();
+	cout << "\n< " << _name << " > вышЄл из чата." << "\n\n";
 }
 
-/* Ё“ќ“ ћ≈“ќƒ ÷≈Ќ“–јЋ№Ќџ… ¬ ЌјЅЋёƒј“≈Ћ≈.ѕри его вызове из Chat(получении сообщени€ Message) начинает работать логика класса User!!! */
-// вывод сообщени€ в чат или ещЄ чего нибудь
-void User::Update(const string& message_from_chat)	// 
-{
-	cout << "I`m user є" << _name << " ѕолучил сообщение: " << message_from_chat << endl;
-}
-
-//сам юзер убирает себ€ из списка рассылки (выход из чата, очистка, вывод меню в консоль)
+// удаление из списка(list) участников чата, выход из чата
 void User::RemoveFromList()
 {
 	_chat->Detach(this);
-	cout << "ёзер " << _name << " удалЄн из списка рассылки\n";
+	//cout << "ёзер " << _name << " удалЄн из списка.\n";
 }
 
 std::string User::getUserName() { return _name; }

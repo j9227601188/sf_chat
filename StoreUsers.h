@@ -1,5 +1,5 @@
 /* 
-Класс для хранения пар имя/пароль. Потом вместо него можно DB прикрутить. 
+	Класс для хранения пар имя/пароль. Потом вместо него можно DB прикрутить. 
 */
 
 #pragma once
@@ -21,7 +21,7 @@ public:
 	StoreUsers();
 	~StoreUsers();
 	bool checkLogin(string name, string pass);	// вход
-	bool checkName(string name);				// регистрация
+	bool checkName(string& name);				// регистрация(проверка уникальности имени)
 	void toStore(string name, string pass);		// занести юзера в базу
 	void showUsers();							// вывести всех юзеров в базе в консоль
 };

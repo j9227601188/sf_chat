@@ -1,8 +1,6 @@
 /*
-	Паттерн Наблюдатель
-Назначение: Создаёт механизм подписки, позволяющий одним объектам следить и
-реагировать на события, происходящие в других объектах.
- */
+	класс чат
+*/
 
 #pragma once
 #include <list>
@@ -13,17 +11,18 @@
 
 using namespace std;
 
-// чат рассылает
 class Chat :public IChat {
-	StoreUsers* _su;			// логин/пароль всех юзеров
-	StoreMessage* _sm;			// все сообщения
-	list <IUser* > user_list;	// список объектов юзеров выполнивших вход в этот чат
+
+	StoreUsers* _su;			// DB логин/пароль всех юзеров
+	StoreMessage* _sm;			// DB все сообщения
+	list <IUser* > user_list;	// список юзеров выполнивших вход в этот чат
+
 public:
 	Chat() = default;
 	Chat(StoreUsers*, StoreMessage*);
 	virtual ~Chat();
-	void Attach(IUser* user) override;
-	void Detach(IUser* user) override;
-	void Notify() override;
-	//void Hello();
+	void Attach(IUser* user) override;	// добавить в чат
+	void Detach(IUser* user) override;	// убрать из чата
+	void Notify() override;				// основной цикл ввода сообщений
+	bool UserInChat(string& name);		// проверка, что пользователь уже в чате
 };

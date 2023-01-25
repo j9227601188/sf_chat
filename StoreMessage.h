@@ -15,19 +15,19 @@ using namespace std;
 class StoreMessage
 {
 	struct msg {
-		string _from;	// от кого
-		string _to;		// кому/имя или "all" - для всех
-		string _mess;	// сообщение
+		string _from;		// от кого
+		string _to;			// кому
+		string _mess;		// сообщение
 	};
 
-	vector<msg>* _msgs;	// массив структур msg
+	vector<msg>* _msgs;		// массив структур сообщение
 
 public:
 	StoreMessage();
 	~StoreMessage();
 
-	void showMsgTo(string name);	// личные сообщения для этого юзера
-	void showMessageAll();			// сообщения для всех
-	void setMessage(string message, string from, string to = "all");	// запись сообщения в хранилку. если не указано кому, то всем
+	void showMsgTo(string name);				// личные сообщения для этого юзера
+	void showMessageAll();						// сообщения для всех
+	void setMessage(string, string, string);	// запись сообщения в хранилку. если не указано кому, то всем
 };
 
